@@ -1,0 +1,1 @@
+Car ID: 2, Make: Honda, Model: Civic, Year: 2015, Color: Black, Price: $19000.0, Registration Number: DEF456

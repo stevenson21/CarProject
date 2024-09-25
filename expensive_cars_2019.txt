@@ -1,0 +1,1 @@
+Car ID: 5, Make: BMW, Model: X5, Year: 2019, Color: Silver, Price: $45000.0, Registration Number: MNO345

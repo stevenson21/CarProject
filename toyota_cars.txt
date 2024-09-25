@@ -1,2 +1,2 @@
-ID: 1, Make: Toyota, Model: Corolla, Year: 2010, Color: Red, Price: $7500.0, Registration Number: ABC123
-ID: 4, Make: Toyota, Model: Camry, Year: 2012, Color: White, Price: $8500.0, Registration Number: DEF234
+Car ID: 1, Make: Toyota, Model: Camry, Year: 2018, Color: Blue, Price: $23000.0, Registration Number: ABC123
+Car ID: 3, Make: Toyota, Model: Corolla, Year: 2012, Color: White, Price: $15000.0, Registration Number: GHI789

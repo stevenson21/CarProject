@@ -1,1 +1,0 @@
-ID: 2, Make: Honda, Model: Civic, Year: 2008, Color: Blue, Price: $6200.0, Registration Number: XYZ789

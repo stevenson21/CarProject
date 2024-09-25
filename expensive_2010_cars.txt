@@ -1,1 +1,0 @@
-ID: 1, Make: Toyota, Model: Corolla, Year: 2010, Color: Red, Price: $7500.0, Registration Number: ABC123

@@ -1,11 +1,9 @@
 import java.io.FileWriter;
 import java.io.IOException;
-import java.time.Year;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Car {
-    // Fields for the Car class
     private int id;
     private String make;
     private String model;
@@ -25,7 +23,7 @@ public class Car {
         this.registrationNumber = registrationNumber;
     }
 
-    // Getter methods
+    // Getters
     public String getMake() {
         return make;
     }
@@ -42,56 +40,57 @@ public class Car {
         return price;
     }
 
-    // Return a string representation of the car (for writing to file)
-    // mainly used to put data into database
+    // Method to display car details (used for outputting to a file)
     @Override
     public String toString() {
-        return "ID: " + id + ", Make: " + make + ", Model: " + model + ", Year: " + yearOfManufacture +
-                ", Color: " + color + ", Price: $" + price + ", Registration Number: " + registrationNumber + "\n";
+        return "Car ID: " + id + ", Make: " + make + ", Model: " + model + ", Year: " + yearOfManufacture
+                + ", Color: " + color + ", Price: $" + price + ", Registration Number: " + registrationNumber;
     }
+
     // Method to save a list of cars to a file
-    public static void saveToFile(String fileName, List<Car> carList) {
+    public static void saveCarsToFile(String fileName, List<Car> cars) {
         try (FileWriter writer = new FileWriter(fileName)) {
-            for (Car car : carList) {
-                writer.write(car.toString());
+            for (Car car : cars) {
+                writer.write(car.toString() + "\n");
             }
+            System.out.println("Data saved to " + fileName);
         } catch (IOException e) {
-            System.out.println("An error occurred while saving the file.");
+            System.out.println("An error occurred while saving to " + fileName);
             e.printStackTrace();
         }
     }
 
-    // A. Method to filter cars by a given brand
-    public static List<Car> filterByMake(List<Car> cars, String make) {
-        List<Car> filteredCars = new ArrayList<>();
+    // A: Get a list of cars of a given brand
+    public static List<Car> getCarsByBrand(List<Car> cars, String brand) {
+        List<Car> result = new ArrayList<>();
         for (Car car : cars) {
-            if (car.getMake().equalsIgnoreCase(make)) {
-                filteredCars.add(car);
+            if (car.getMake().equalsIgnoreCase(brand)) {
+                result.add(car);
             }
         }
-        return filteredCars;
+        return result;
     }
 
-    // B. Method to filter cars by model and years in use
-    public static List<Car> filterByModelAndYearsInUse(List<Car> cars, String model, int yearsInUse) {
-        int currentYear = Year.now().getValue();
-        List<Car> filteredCars = new ArrayList<>();
+    // B: Get a list of cars of a given model that have been in use for more than n years
+    public static List<Car> getCarsByModelAndYears(List<Car> cars, String model, int yearsInUse) {
+        int currentYear = java.time.Year.now().getValue();  // Get the current year
+        List<Car> result = new ArrayList<>();
         for (Car car : cars) {
             if (car.getModel().equalsIgnoreCase(model) && (currentYear - car.getYearOfManufacture()) > yearsInUse) {
-                filteredCars.add(car);
+                result.add(car);
             }
         }
-        return filteredCars;
+        return result;
     }
 
-    // C. Method to filter cars by year of manufacture and price
-    public static List<Car> filterByYearAndPrice(List<Car> cars, int year, double minPrice) {
-        List<Car> filteredCars = new ArrayList<>();
+    // C: Get a list of cars of a given year of manufacture with price higher than the specified one
+    public static List<Car> getCarsByYearAndPrice(List<Car> cars, int year, double minPrice) {
+        List<Car> result = new ArrayList<>();
         for (Car car : cars) {
             if (car.getYearOfManufacture() == year && car.getPrice() > minPrice) {
-                filteredCars.add(car);
+                result.add(car);
             }
         }
-        return filteredCars;
+        return result;
     }
 }
